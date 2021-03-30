@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="icon" type="image/png" href="themes/icon/favicon.png">
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+
+<!--------- header  begin------------->
+<div class=" container-fluid header-main header-section navbar-about service-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-logo navbar-brand "></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" >Home</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="about.html" >Documentation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="Product.html" >Product Service</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="Case.html" >Classic Case</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="contact.html" >Contact Us</a>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1><span style="margin-top: 50px;">FAD Data Services</span><br>Documentation</h1>
+    </div>
+
+</div>
+<!--------- header  End------------->
+
+<div style="height:30px;"></div>
+
+
+
+
+
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#getting-started">Deploy</a></li>
+                        <li class=""><a href="#using-less">Storage Resources</a></li>
+                        <li class=""><a href="#command-line-with-rhino">Data Schema</a></li>
+                        <li class=""><a href="#client-side-usage">Ways of showing data</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Deploy<span id="getting-started" class="anchor-target"></span></h3></div>
+                    <p></p>
+                    <pre>
+                        <code class="lang-less">
+                            <p></p>
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Storage Resources<span id="using-less" class="anchor-target"></span></h3></div>
+                    <p>Data are stored in blobs in the East US data centre, in the following blob container:</p>
+                    <pre style="line-height: 0px;">
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">https://</p>
+                        </code>
+                    </pre>
+                    <p>Within the container, data are organized according to:</p>
+                    <pre style="line-height: 0px;">
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">[	] / [	] / [	]</p>
+                        </code>
+                    </pre>
+                    <p>A Python code example for accessing the datasets directly is available in the notebook provided under “directly data access”.</p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Data Schema<span id="command-line-with-rhino" class="anchor-target"></span></h3></div>
+                    <p>Each FAD is uniquely identified by the following required information:</p>
+                    <pre style="line-height: 0px;">
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">"FADId" – numeric ID 8 Charc Unique</p>
+                            <p style="margin-top: 11px;">"ISO_country" – location data (latitude and longitude) of the FAD around sea in St Lucia</p>
+                            <p style="margin-top: 11px;">"Latitude" – the latitude of the FAD's location</p>
+                            <p style="margin-top: 11px;">"Longitude" – the longitude of the FAD's location</p>
+                            <p style="margin-top: 11px;">"Year" – the year when the FAD's data was recorded</p>
+                            <p style="margin-top: 11px;">"Month" – the month when the FAD's data was recorded</p>
+                            <p style="margin-top: 11px;">"Day" – the day when the FAD's data was recorded</p>
+                        </code>
+                    </pre>
+                    <p>Through the “FADId” or “GPS” location, you can easily locate a specific FAD.</p>
+                    <p>Apart from the data above, additional information can be found for most of the FADs:</p>
+                    <pre style="line-height: 0px;">
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">"Windspeed" – Current windspeed around the FAD in Beaufort wind force scale KNOTS</p>
+                            <p style="margin-top: 11px;">"Time" – Current time of the FAD's data being recorded, format in hh.mm</p>
+                            <p style="margin-top: 11px;">"Temp" – Current temperature of the FAD’s environment in degree Celsius</p>
+                            <p style="margin-top: 11px;">"Depth" – Current depth of the FAD’s environment in meters</p>
+                            <p style="margin-top: 11px;">"Sal" – Current salinity of the FAD’s sea area</p>
+                            <p style="margin-top: 11px;">"pH" – Current pH of the FAD’s sea area</p>
+                            <p style="margin-top: 11px;">"Oxy" – Oxygen concentration of the FAD’s sea area</p>
+                            <p style="margin-top: 11px;">"Speed" – moving speed of the particular FAD in Knot Nautical Miles per Hour</p>
+                            <p style="margin-top: 11px;">"Heading" – compass bearing heading direction of the particular FAD</p>
+                            <p style="margin-top: 11px;">"FishLanding" – estimated fish landing values of 10 fish types for 10-11 fishing sites</p>
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Ways of showing data<span id="client-side-usage" class="anchor-target"></span></h3></div>
+                    <p>We provide different kinds of views of the datasets e.g. graph, form, map. You can choose the way you want to see the data.</p>
+                    <p>Example of a FAD location data map:</p>
+                    <img height="300px" width="300px" src="themes/img/documentationPage/exPicFADLocation.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:30px;"></div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 20 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+</body>
+</html>

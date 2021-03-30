@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FAD Data Service</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="module" src="/pwabuilder-sw-register.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+    <link rel="stylesheet" href="css/FADLocationIndex.css" type="text/css">
+    <script src="javascripts/FADLocationStyleSettings.js"></script>
+    <script src="javascripts/FADLocationFromAPI.js"></script>
+</head>
+<body>
+    <div class = "selector"> 
+        Select header color:<input type="color" id="header-color-selector" name="header-color-selector" value="#007faa" onchange ="changeHeaderColor()" ><br>
+    </div>
+    <header>
+        <img src="images/Azure.png" />
+        <span>FADs' Location</span>
+    </header>
+    
+    <main>
+        <div class="searchPanel">
+            <div>
+                <input id="searchTbx" type="search" placeholder="Find a FAD" value = "Saint Lucia"/>
+                <button id="searchBtn" title="Search"></button>
+            </div>
+        </div>
+        <div id="listPanel"></div>
+        <div id="myMap"></div>
+        <button id="myLocationBtn" title="My Location"></button>
+    </main>
+</body>
+</html>

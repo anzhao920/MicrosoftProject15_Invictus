@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <title>FAD Data Table View</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" type="text/css" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.css">
+        <script type="module" src="pwabuilder-sw-register.js"></script>
+        <script type="module" src="pwabuilder-sw.js"></script>
+        <script src="bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+
+        <script src="javascripts/FADDataView.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <button type="button" class="btn btn-primary" onclick="_export()">Export</button>
+        <!-- export startpoint -->
+        <table id="FADDataTable" class="table table-striped table-hover">
+            <thead>
+                <tr id="tableTitle">
+                    <th scope="col">FADId</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr></tr>
+            </tbody>
+        </table>
+        <!-- export endpoint -->
+        <script>
+        
+        getFADData().then(function (data) {
+            var FADInfos = JSON.parse(data);
+            var searchElements = window.location.href.split("?")[1].split(",");
+
+            var table = document.getElementById("FADDataTable");
+            var tableTitle = document.getElementById("tableTitle");
+            var columnNum = 1;
+
+            if (!(searchElements.includes('country') && !searchElements.includes('location') && !searchElements.includes('depthVsTemp') && !searchElements.includes('DepthVsSalinity'))) {
+                tableTitle.appendChild(addNewTitle("WOD_unique"));
+                columnNum++;
+            }
+            if (searchElements.includes('location') || searchElements.includes('depthVsTemp') || searchElements.includes('DepthVsSalinity')) {
+                tableTitle.appendChild(addNewTitle("Year/Month/Day/Time"));
+                columnNum++;
+            }
+            if (searchElements.includes('location')) {
+                tableTitle.appendChild(addNewTitle("Latitude"));
+                columnNum++;
+                tableTitle.appendChild(addNewTitle("Longitude"));
+                columnNum++;
+            }
+            if (searchElements.includes('country')) {
+                tableTitle.appendChild(addNewTitle("ISO_country"));
+                columnNum++;
+            }
+            if (searchElements.includes('depthVsTemp') || searchElements.includes('DepthVsSalinity')) {
+                tableTitle.appendChild(addNewTitle("depth(m)"));
+                columnNum++;
+            }
+            if (searchElements.includes('depthVsTemp')) {
+                tableTitle.appendChild(addNewTitle("Temp(℃)"));
+                columnNum++;
+            }
+            if (searchElements.includes('DepthVsSalinity')) {
+                tableTitle.appendChild(addNewTitle("Sal"));
+                columnNum++;
+            }
+
+            var lastFADLat;
+            var lastFADCruiseID;
+            for (var i = 0; i < FADInfos.length; i++) {
+                var currentFADLat = FADInfos[i].Latitude;
+                var currentFADCruiseID = FADInfos[i].FADId;
+                if (searchElements.includes('location') && (!searchElements.includes('country')|| searchElements.includes('country')) && !searchElements.includes('depthVsTemp') && !searchElements.includes('DepthVsSalinity')) {
+                    if (currentFADLat == lastFADLat) {
+                        continue;
+                    } else {
+                        lastFADLat = currentFADLat;
+                    }
+                } else if (searchElements.includes('country') && !searchElements.includes('location') && !searchElements.includes('depthVsTemp') && !searchElements.includes('DepthVsSalinity')) {
+                    if (currentFADCruiseID == lastFADCruiseID) {
+                        continue;
+                    } else {
+                        lastFADCruiseID = currentFADCruiseID;
+                    }
+                } else if (searchElements.includes('depthVsTemp') || searchElements.includes('DepthVsSalinity')) {
+                    if (currentFADCruiseID != lastFADCruiseID) {
+                        var rowb = table.insertRow(table.rows.length-1);
+                        rowb.setAttribute("class", "table table-dark");
+                        for (var j = 0; j < columnNum; j++) {
+                            var cb = rowb.insertCell(j);
+                        }
+                        lastFADCruiseID = currentFADCruiseID;
+                    }
+                }
+                var row = table.insertRow(table.rows.length-1);
+                var cID = row.insertCell(0);
+                cID.innerHTML = currentFADCruiseID;
+
+                var insertPoint = 1;
+                if (!(searchElements.includes('country') && !searchElements.includes('location') && !searchElements.includes('depthVsTemp') && !searchElements.includes('DepthVsSalinity'))) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i].WOD_unique;
+                }
+                if (searchElements.includes('location') || searchElements.includes('depthVsTemp') || searchElements.includes('DepthVsSalinity')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i].Year + '/' + FADInfos[i].Month + '/' + FADInfos[i].Day + '/' + FADInfos[i].Time;
+                }
+                if (searchElements.includes('location')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = currentFADLat;
+                    var c2 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c2.innerHTML = FADInfos[i].Longitude;
+                }
+                if (searchElements.includes('country')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i].ISO_country;
+                }
+                if (searchElements.includes('depthVsTemp') || searchElements.includes('DepthVsSalinity')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i]["depth_m_"];
+                }
+                if (searchElements.includes('depthVsTemp')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i].Temp;
+                }
+                if (searchElements.includes('DepthVsSalinity')) {
+                    var c1 = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c1.innerHTML = FADInfos[i].Sal;
+                }
+            }
+        })
+        </script>
+    </body>
+</html>
+

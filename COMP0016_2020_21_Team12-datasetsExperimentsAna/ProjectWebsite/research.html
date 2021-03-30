@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section research-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Research</h1>
+        <p>Before or during the process of development, do researches is very important since it allows people to gain knowledges about the area they are in. Also, developers can learn something from both pros and cons of related projects.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#relatedProjectsReview">Related Projects Review</a></li>
+                        <li class=""><a href="#technologyReview">Technology Review</a></li>
+                        <li class=""><a href="#summaryOfTechnicalDecisions">Summary of Technical Decisions</a></li>
+                        <li class=""><a href="#references">References</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Related Projects Review<span id="relatedProjectsReview" class="anchor-target"></span></h3></div>
+                    <p style="font-size:20px"><b>HttpTrigger Azure Function example -- DataCleaning Pipeline: </b><br />(<a href="https://github.com/Azure-Samples/functions-python-data-cleaning-pipeline">https://github.com/Azure-Samples/functions-python-data-cleaning-pipeline</a>)</p>
+                    <p style="font-size: larger;">
+                        The project demonstrates how to use the url of the request as a trigger to simulate the azure function. For our EventGrid Trigger Azure Function, they are highly similar in some ways. 
+                        The event detected by our azure function contains the url of the request as a property. Thus, by looking at this example, it gives a clear introduction on how to start writing our own function.
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Progressive Web App example -- Starbucks PWA: </b>(<a href="https://app.starbucks.com/">https://app.starbucks.com/</a>)</p>
+                    <img width="900px" style="margin-top: 15px;" src="themes/img/researchPage/starbucksApp.png">
+                    <p style="margin-top: 15px; font-size: larger;">Mean features: Order, get shop info, manage payments etc...</p>
+                    <p style="font-size: larger;">
+                        Not a database orientated PWA, however, we can learn lots of things from it. It is 99% similar to Starbucks’ iOS app. It can runs in offline mode, 
+                        which means users can choose and customise their product even without internet connection. Once they are online, they can directly order the drinks they like with other special customisation from them. 
+                        The purpose of PWA is to enable web-services, letting customers with desktops or laptops be able to order. Also, if a user does not have a mobile app, 
+                        they can just go to the website and run the PWA without any installations, which brings convenience. 
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Technology Review<span id="technologyReview" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        The mission of Project 15 is to empower conservationists and data scientists to capture and analyse data for preserving endangered species and the ecosystem.</p>
+                    <p style="font-size: larger;">
+                        To address the issue, we first had to collect the data relevant to our use case, and make it easily accessible for data scientists and understandable for users with no CS background. 
+                        Then, we had to find a way to display the data such that it's easy to understand, but also provides relevant insights.
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Handling data</b></p>
+                    <p style="font-size: larger;">
+                        Different ocean datasets (such as CTD, OSD, MBT) can be found on the NOAA website, but they come into a format that it's hard to access. Users have to download the file, decompress it, 
+                        and then use a software package that converts it into a CSV file. Given that each dataset type gives details of around 90 features (such as water temperature, salinity, depth, ...), 
+                        using the pre-write C-code was a reasonable decision.  Because our data processing solution was written in Python,  we had to make small changes to make the above-mentioned C program easy to run from the main Python.
+                    </p>
+                    <p style="font-size: larger;">
+                        Other datasets relevant to the Saint Lucia use case can be downloaded in CSV formats from <a href="https://data.govt.lc/search/type/dataset">https://data.govt.lc/search/type/dataset</a>.
+                    </p>
+                    <p style="font-size: larger;">
+                        To filter the data to be specific to Saint Lucia we could easily use an existing API such as https://geocode.xyz/api, which given a pair of latitude and longitude, returns more details about the location, 
+                        such as it's country and region. While this was easy to use, a free account would only process 1 request per second, resulting in a high efficiency cost. 
+                        A better approach was to define a polygon around the desired country (in our case, Saint Lucia) and implement a point-in-polygon math algorithm to check the validity of a location. Apart from efficiency, 
+                        this solution is extendable, as data can be filtered around any region.
+                    </p>
+                    <p style="font-size: larger;">
+                        Additionally, the time range of the weather data was not compatible with the one for ocean data. Thus, we implemented a machine learning SVM prediction algorithm for completing the dataset. 
+                        Other alternatives considered were linear regression and neural networks. The first was too simple for our use-case whereas the second one required a much bigger amount of data compared to our resources.
+                    </p>
+                    <p style="font-size: larger;">
+                        We chose to upload data to Azure Blob Storage and store it in Azure Cosmos DB [1]. Alternatives considered were Azure Data Lake, Azure Synapse, but we have found out that using Azure Blob Storage is rather cost effective. 
+                        Additionally, after discussion with Microsoft team, the project does not acquire using SQL to analyse the data because the project' clients are non computer scientists. 
+                        In which Azure Data Lake and Azure Synapse supports SQL analysis. Thus, we chose to use Azure Blob Storage and Azure Cosmos DB for our project.
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Displaying data</b></p>
+                    <p style="font-size: larger;">
+                        To provide insights and analytics from the data, we decided to build a Progressive Web App (PWA). PWAs are progressively enhanced web apps that include features such as installation, 
+                        offline support and push notifications. Alternatively, we could have implemented a simple web or mobile application, but that would have meant restricting the possible users to Android, Apple or web users. 
+                    </p>
+                    <p style="font-size: larger;">
+                        The PWA is hosted using Node and implemented in Vanilla JavaScript. Because the application serves as a means of visualization, 
+                        we decided that using a JS framework such as React will make the project unnecessarily more complex and consequently less flexible. 
+                    </p>
+                    <p style="font-size: larger;">
+                        To connect the data with the PWA without inefficiently storing it in the browser, we implemented a Python API. By analysing potential frameworks from https://rapidapi.com/blog/best-python-api-frameworks/,  
+                        we decided to use Flaks instead of Django because it's fast, highly performant and doesn't require additional dependencies. 
+                    </p>
+                    <p style="font-size: larger;">
+                        For implementing the table and graphs that shows or data, originally we planned to write the relative JavaScripts and CSS by myself, however it involves a huge amount of work. As we dug deeply into this, 
+                        we found out that there are open-source JavaScript and CSS libraries available online. For some of the HTML elements and the table, we chose Bootstrap [2], 
+                        a popular front-end open source toolkit for web development to define the functionalities and themes. There are other tools like Bootstrap, however, 
+                        Bootstrap uses easily understandable explanation language and codes so it is easy to use. Also, it is widely used by tons of developers and has a good reputation, 
+                        we don’t need to worry about the stability and availability of it. Because if our JS library lacks maintenance, our product may be in danger as well with a high rate of potential bugs. 
+                        As for the graph view, we used Plotly.js [3]. Similar to Bootstrap, it is open-source, but only a JS file. There is another choice which is Chart.js. However, it is harder to use compared to plotly.js, 
+                        and does not have clear instructions of particular graphs. On the other hand, each individual type of graphs from Plotly.js (like bar chart, pie chart etc.) have specific code examples that are easy to understand, 
+                        which make us easier to manage and maintain the code in the future.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Summary of Technical Decisions<span id="summaryOfTechnicalDecisions" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        The data pipeline was implemented in Python. Depending on the file type, the parsing stage uses file handling python modules (such as json, csv, gzip) and the C program to parse the data into JSON formats. 
+                        The pre-processing and processing stages use the pandas library to manipulate data. The machine learning script, which augments the dataset with weather information, 
+                        leverages the scikit-learn package to build the prediction model and the math and statistics modules for normalizing data. 
+                    </p>
+                    <p style="font-size: larger;">
+                        Uploading and storing the data was implemented in Python. After the datasets are parsed into JSON objects, 
+                        the code uses azure.storage.blob to upload them to Azure Blob Storage inside a container under the storage account connected to the code. The azure function detects the change within Blob Storage, 
+                        and therefore automatically converts the created blob into a table storage with the table entities equal to each content in JSON objects.
+                    </p>
+                    <p style="font-size: larger;">
+                        For uploading and storing the data, the transfer of data from the database to the visualization platform was implemented as a Python Flask API.
+                    </p>
+                    <p style="font-size: larger;">
+                        The visualization platform was designed as a JavaScript progressive web app hosted with NodeJS. For authenticating users, we used the pwa-auth web component. 
+                        To display information on the map, we used the Azure Maps client-side JavaScript library. For the table and graph visualizations, we used Bootstrap and plotly.js.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">References<span id="references" class="anchor-target"></span></h3></div>
+                    <p style="font-size:20px;"><b>Microsoft pages -- Azure functions and Blob Storage</b></p>
+                    <p style="font-size: larger;">[1]</p>
+                    <p style="font-size: larger;">
+                        This two links instruct us how to use the azure library in Python to upload blobs and how to create an own azure function and deploy it.<br />
+                        Available: <br />
+                        <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid-trigger?tabs=python%2Cbash">https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid-trigger?tabs=python%2Cbash</a><br />
+                        <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python">https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python</a><br />
+                        [Accessed: November 15, 2020].
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Bootstrap</b></p>
+                    <p style="font-size: larger;">[2]</p>
+                    <p style="font-size: larger;">
+                        Bootstrap is an open-source website that provides tons of JavaScript and CSS libraries for html related coding.<br />
+                        Available: <br />
+                        <a href="https://getbootstrap.com/">https://getbootstrap.com/</a><br />
+                        [Accessed: February 24, 2021].
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Plotly</b></p>
+                    <p style="font-size: larger;">[3]</p>
+                    <p style="font-size: larger;">
+                        Plotly.js offers different types of graphs, easy to deploy and customise things.<br />
+                        Available: <br />
+                        <a href="https://plotly.com/">https://plotly.com/</a><br />
+                        [Accessed: February 26, 2021].
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+
+<head>
+  <title>FAD Datasets</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.css">
+  <script type="module" src="/pwabuilder-sw-register.js"></script>
+  <script src="bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+  
+  <style type="text/css">
+    #divImageButton {text-align: center;}
+    #divImageButton > div {display: inline-block;}
+    #map {height: 400px; width: 400px; background:url(images/homepage/map.jpeg) no-repeat; background-size:400px 400px; position: relative; margin: 3px; cursor: pointer;}
+    #table {height: 400px; width: 400px; background:url(images/homepage/table.png) no-repeat; background-size:400px 400px; position: relative; margin: 3px; cursor: pointer;}
+    #buttonText {position: absolute; left: 140px; top: 180px; font-size:xx-large; color: whitesmoke;}
+  </style>
+  <script src="javascripts/buttonsScript.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+</head>
+
+<body>
+  <h1 align="center" style="margin-bottom: 50px;">Welcome to FAD Datasets</h1>
+
+  <!-- search bar -->
+  <div align="center">
+    <div class="input-group mb-3" style="width: 800px;">
+      <input id="searchBar" type="text" class="form-control" placeholder="Search a FAD by ID" aria-label="Search a FAD by ID" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="searchFAD()">Search</button>
+    </div>
+  </div>
+  
+  <div id="divImageButton">
+    <div id = "map" onclick="window.location.assign('FADLocationIndex.html');">
+      <p id ="buttonText">Map View</p>
+    </div>
+    <div id = "table" onclick="window.location.assign('FADAllInfo.html');">
+      <p id ="buttonText">Table View</p>
+    </div>
+  </div>
+  <div align="center" style="margin-top: 20px;">
+    <p class="font-monospace">Search Specific Elements</p>
+    <div class="btn-group btn-group-vertical" role="group" aria-label="Basic checkbox toggle button group" style="margin-right: 10px;">
+      <input type="checkbox" class="btn-check" id="btncheck1" onclick="setSearchElements('location')" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck1" style="height: 50px; width: 300px;">FADs' Locations</label>
+    
+      <input type="checkbox" class="btn-check" id="btncheck2" onclick="setSearchElements('country')" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck2" style="height: 50px; width: 300px;">Country of FADs</label>
+    
+      <input type="checkbox" class="btn-check" id="btncheck3" onclick="setSearchElements('depthVsTemp')" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck3" style="height: 50px; width: 300px;">Depth vs. Temperature</label>
+  
+      <input type="checkbox" class="btn-check" id="btncheck4" onclick="setSearchElements('DepthVsSalinity')" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck4" style="height: 50px; width: 300px;">Depth vs. Salinity</label>
+    </div>
+    <div class="btn-group-vertical">
+      <button id="viewByTables" type="button" class="btn btn-primary" style="height: 70; width: 100; margin: 10px; margin-left: 20px;" onclick="getSearchElements(1)">View by Tables</button>
+      <button id="viewByGraphs" type="button" class="btn btn-primary" style="height: 70; width: 100; margin: 10px; margin-left: 20px;" onclick="getSearchElements(2)">View by Graphs</button>
+    </div>
+    
+  </div>
+  
+
+  <script>
+    var searchBar = document.getElementById("searchBar");
+    function searchFAD() {
+      var searchID = searchBar.value;
+      window.location.assign("searchFADByID.html?" + searchID);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+click==7.1.1
+Flask
+itsdangerous==1.1.0
+Jinja2==2.11.1
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+Flask-RESTful
+Flask-Cors
+pandas
+pathlib
+azure-core
+azure-cosmos
+azure-cosmosdb-nspkg
+azure-cosmosdb-table

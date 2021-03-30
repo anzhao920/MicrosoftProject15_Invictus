@@ -1,0 +1,34 @@
+import requests
+import csv
+from contextlib import closing
+
+
+def save_csv(filename, data):
+    f = open(filename, 'w', encoding='utf-8', newline='')
+    csv_w = csv.writer(f)
+    for row in data:
+        csv_w.writerow(row)
+    f.close()
+
+
+def download_csv(url):
+    html_str = requests.get(url, stream=True)
+    print(html_str)
+    filename = url[name(url) + 1:]
+    with closing(html_str) as r:
+        f = (line.decode('utf-8') for line in r.iter_lines())
+        reader = csv.reader(f, delimiter=',', quotechar='"')
+        save_csv(filename, reader)
+        print(filename)
+
+
+def name(url):
+    resultindex = -1
+    for index, e in enumerate(url):
+        if e == "/":
+            resultindex = index
+    return resultindex
+
+
+if __name__ == '__main__':
+    download_csv("https://data.govt.lc/sites/default/files/Estimated%20Landings%202016_csv.csv")

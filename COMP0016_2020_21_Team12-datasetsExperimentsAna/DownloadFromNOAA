@@ -1,0 +1,34 @@
+import requests
+import gzip
+
+
+# Decompress gz zip file into a txt file
+# Used only for the NOAA website
+def unzip_gz(filename):
+    f_name = filename.replace(".gz", "")
+    g_file = gzip.GzipFile(filename)
+    open(f_name, "wb+").write(g_file.read())
+    g_file.close()
+
+
+def download(urls):
+    for url in urls:
+        html_str = requests.get(url).content
+        filename = url[name(url)+1:]
+        with open(filename, 'wb') as f:
+            print(filename)
+            f.write(html_str)
+        unzip_gz(filename)
+
+
+def name(url):
+    resultindex = -1
+    for index, e in enumerate(url):
+        if e == "/":
+            resultindex = index
+    return resultindex
+
+
+if __name__ == '__main__':
+    urls = ["https://data.nodc.noaa.gov/woa/WOD/GEOGRAPHIC/CTD/OBS/CTDO7106.gz"]
+    download(urls)

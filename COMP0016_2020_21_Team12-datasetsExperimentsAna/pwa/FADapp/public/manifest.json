@@ -1,0 +1,17 @@
+{
+    "lang": "en-us",
+    "name": "FAD vizualizations PWA",
+    "short_name": "FADPWA",
+    "description": "A sample PWA for visualising FADs",
+    "start_url": "/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",        
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/images/icon512.png",
+            "sizes": "512x512"
+        }
+    ]
+}

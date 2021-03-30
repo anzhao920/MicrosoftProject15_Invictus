@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Testing -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section testing-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Testing</h1>
+        <p>A great development process should always contains testing parts, to ensure functionalities, gain confidence and have a better understanding of the structure.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#testingStrategy">Testing Strategy</a></li>
+                        <li class=""><a href="#dataPipeline">Data Pipeline</a></li>
+                        <li class=""><a href="#progressiveWebApp">Progressive Web App</a></li>
+                        <li class=""><a href="#api">API</a></li>
+                        <li class=""><a href="#userAcceptanceTesting">User Acceptance Testing</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Testing Strategy<span id="testingStrategy" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        For each component of our solution, we used different testing approaches. For instance, we used mainly manual testing for the data pipeline, whereas for the data visualization we used automated unit tests. 
+                        In addition, we conducted usability tests on users from various backgrounds.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Data Pipeline<span id="dataPipeline" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        The ML SVM prediction model was manually tested by visualising the results produced. In addition, its performance was compared to the Linear Regression model by comparing the mean absolute error and the R2 score. 
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Progressive Web App<span id="progressiveWebApp" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        To ensure that the progressive web app behaves as expected, we first started writing unit tests. For the JavaScript code, we used the Jest universal testing platform. 
+                        All the test files were written in the test folder of our PWA, and they can be executed using the "npm test" command. 
+                    </p>
+                    <p style="font-size: larger;">
+                        To ensure that the progressive web app behaves as expected, we first started writing unit tests. For the JavaScript code, we used the Jest universal testing platform. 
+                        All the test files were written in the test folder of our PWA, and they can be executed using the "npm test" command. Additionally, 
+                        our build pipeline implemented in the Azure DevOps project will run the test and report any failure before producing the build artifact. 
+                    </p>
+                    <p style="font-size: larger;">
+                        For the Azure Maps visualization, the code was written following the "separation of concern" design pattern. Thus, 
+                        testing the application logic did not require mocking the functionalities provided by our API nor by the Azure Maps JavaScript library.  For instance, 
+                        we test that only the unique FAD ids are added to the map by providing a mock JSON object instead of the full dataset. By mocking the data for a FAD, 
+                        we check the validity of the HTML created for its additional details. Similarly, we check the options for map objects such as lines. 
+                    </p>
+                    <p style="font-size: larger;">
+                        In order to test the searching elements section of our PWA (at the bottom of the UI which you can select particular elements to search), 
+                        we firstly ensure that the list for indicating the selected searching elements can be changed correctly. We use a list to pass required searching elements to the searching result page. 
+                        Everytime the user selects an element, the corresponding keyword will be pushed to the list (A second click will remove it of course), then the data views page knows that it should display those particular data. 
+                        By trying to push different elements to the list respectively and check the returned list, we can ensure that the list performs correctly. Secondly, 
+                        we need to make sure that the information passed to the data views pages are correct. We use the URL ( html file name + ? + the list ) to tell the data views page which part of data should be displayed. 
+                        By trying to assign different lists to the URL, and check the returned URL string, we can know whether the data views page can get the correct instructions. Then it comes to the API’s part.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">API<span id="api" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        To test the API, we used the request Python Library, which allows sending HTTP requests. For instance, by sending GET requests to the API, we tested that either the correct data was retrieved for a particular FAD id, 
+                        or the 404 status code was sent if no data was found. Similarly, by sending PUT requests, we tested that the new FAD data is indeed added to the dataset.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">User Acceptance Testing<span id="userAcceptanceTesting" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        We went through the codes and functionalities with our project partners during the last few weeks. Generally, we tested the core functionalities, with related code explained to them. We followed the overall pipeline of our project 
+                        (Upload -> Store -> View) to see the perfomance of the product. Our project partners said that most parts are good, and they gave us some suggestions.
+                    </p>
+                    <p style="font-size: larger;">
+                        Firstly, the Azure account information (such as Access Keys) should be provided by the users when they deploying our project. We should not contain any information of our own Azure accounts, which is inappropriate and unsafe.
+                    </p>
+                    <p style="font-size: larger;">
+                        Secondly, instead of using the “magical number” (We originally used a list with four int, initialised to [0, 0, 0, 0] to pass searching elements. If a particular element is selected, we change the integer with corresponding index to 1.), 
+                        we could use keywords in the list to tell the result page about the searching elements selected. We can initialise an empty list, when an element is selected, we can just push that keyword to the list. The benefit of doing this is that this approach is not only friendly for the developer since it clearly shows the information, 
+                        but also for the actual users because they can understand the searching elements by their URL. Furthermore, they can even directly type in the elements they want to search follow the URL without operating them on the home page.
+                    </p>
+                    <p style="font-size: larger;">
+                        We also met our potential clients from Invictus FAD Team from Saint Lucia. We did a presentation to them, to demonstrate our implemented functionalities. They said that this is exactly what they want, and they appreciated for our hard works.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

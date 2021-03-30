@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deployment -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section requirements-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Deployment Manual</h1>
+        <p>Having continuous integration and continuous deployment ensures a smooth development process for the PWA. Thus, we created a build pipeline in Azure DevOps and connected it to our GitHub repository. </p>
+        <p>When the pipeline is run, it will take the latest version of the repository and execute the build and testing scripts.  Similarly, we created a release pipeline. It takes the output produced by the build pipeline and deploys it to the Azure App Service.</p>
+        <!-- <p>Our deployed app can be found at https://fadvis.azurewebsites.net/ and the deployed API can be found at https://fadapi.azurewebsites.net/ .</p> -->
+        <p>Below, you will find the deployment instructions.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#cloneGitHubRepo">Clone the GitHub Repository</a></li>
+                        <li class=""><a href="#downloadDataDeployment">DownloadData deployment</a></li>
+                        <li class=""><a href="#azureFunctionDeployment">Azure Function deployment</a></li>
+                        <li class=""><a href="#useExportedCICD">Use the exported CI/CD pipelines</a></li>
+                        <li class=""><a href="#configureCI">Configure the build pipeline</a></li>
+                        <li class=""><a href="#configureCD">Configure the release pipeline</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Clone the GitHub Repository<span id="cloneGitHubRepo" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                       First clone the GitHub repository from: 
+                    </p>
+                    <p style="font-size: larger;">
+                        <a href="https://github.com/Project15Invictus/MicrosoftProject15_Invictus.git">https://github.com/Project15Invictus/MicrosoftProject15_Invictus.git</a>
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">DownloadData deployment<span id="downloadDataDeployment" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        (Users can choose to view the deployment by finding Deployment of UrlToAzureStorage.pdf under the doc folder after the code is cloned).
+                    </p>
+                    <p style="font-size: larger;">
+                        Once the GitHub repository is cloned, navigate to the same folder of a file called UrlToAzureStorage.py. Add a .env file, inside this file write 
+                        (AZURE_CONNECTION_STRING = "your_connection_string" AZURE_CONTAINER_NAME = "your_container_name"). Then users are set to use the code to download data from given urls to the azure blob storage.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Azure Function deployment<span id="azureFunctionDeployment" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        (Users can choose to view the deployment by finding Deployment of Azure Function.pdf under the doc folder after the code is cloned).
+                    </p>
+                    <p style="font-size: larger;">
+                        Open the EventGridTriggerAzureFunction folder, under it create a local.settings.json file. Inside the file, add credentials like this: 
+                    </p>
+                    <img width="600px" src="themes/img/deploymentPage/azureFunctionCredentials.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        Right click on the folder (EventGridTriggerAzureFunction) and select Deploy to Function App. Select the same subscription as users' storage account -> Create new Function App in Azure (Advanced) -> 
+                        enter a unique name for the azure function -> select Python 3.8 -> Select Consumption -> Select the resource group that has users' storage account -> Select the storage account -> 
+                        Create new Application Insights resource                        
+                    </p>
+                    <p style="font-size: larger;">
+                        After deployment is finished. Go to Azure portal and find the azure function just created. Select Configuration under Settings. Add the application settings as local.settings.json to azure service. 
+                        Create an Event Grid System Topic in Azure.                        
+                    </p>
+                    <p style="font-size: larger;">
+                        Find storage account, select Events -> +Event Subscription. Give a name of subscription, Event Schema as Event Grid Schema. Select storage account and the Event Grid System Topic created. 
+                        Select Event Types as Blob Created. Select Endpoint Types as Azure Function, and select the Endpoint.
+                    </p>
+                    <p style="font-size: larger;">
+                        Then azure function is successfully deployed.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Use the exported CI/CD pipelines<span id="useExportedCICD" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        Once the gitHub repository is cloned, the pwa can either be deployed from Visual Studio Code, or using our build and release pipelines exported as JSON. For both files, 
+                        replace the occurrences of "YOUR-PROJECT-ID" with the id of your Azure DevOps your project id, and "YOUR-ACCOUNT-NAME" with the username of your Azure account. To use the pipelines, 
+                        navigate to the Builds or Releases page in your Azure DevOps project.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Configure the build pipeline<span id="configureCI" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">For the build pipeline, navigate to Builds, choose +New and select the corresponding import pipeline option.</p>
+                    <img width="900px" src="themes/img/deploymentPage/importBuild.png">
+                    <p style="margin-top: 15px; font-size: larger;">Select the FADAppCI.json file from pwa/FADapp/CICD_pipelines. After the import is complete, you will be shown the new pipeline that is created. Exporting a pipeline strips any project specific data like agent pools and service connections, thus this settings should be configured.</p>
+                    <p style="font-size: larger;">First, in order to connect to the GitHub repository, you need to authorize a service connection, by selecting it from the Authorized using connection: button under the "Get sources tab". Similarly, to create a new service connection, click on New Service Connection, as shown in the image below.</p>
+                    <img width="900px" src="themes/img/deploymentPage/createServiceConn.png">
+                    <p style="margin-top: 15px; margin-top: 15px; font-size: larger;">
+                        For the Agent pool, select "Azure Pipelines" and for the Agent Service, select the "windows 2019" machine. 
+                    </p>
+                    <img width="900px" src="themes/img/deploymentPage/FADAppCI_config.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        For changing the API key of the Azure Maps account, go to the pipeline Variables tab, and change the value for "AzureMapsAPIKey" to your key value.
+                    </p>
+                    <p style="font-size: larger;">
+                        Now you can run the build pipeline as shown below.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Configure the release pipeline<span id="configureCD" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        For the release pipeline, navigate to Releases, choose +New and select the corresponding import pipeline option. 
+                    </p>
+                    <img width="600px" src="themes/img/deploymentPage/importRelease.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        Select the FADAppCD.json file from pwa/FADapp/CICD_pipelines.
+                        After the import is complete, you will be shown the new pipeline that is created.
+                        To configure the deployment, click on the "Deploy FAD app" stage.
+                    </p>
+                    <img width="600px" src="themes/img/deploymentPage/stages.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        Similarly to the previous pipeline, the release needs configurations. 
+                        More specifically, you will be prompted to select your Azure Subscription, 
+                        and the name of the Azure App Service you want your app to be deployed to. 
+                    </p>
+                    <img width="900px" src="themes/img/deploymentPage/settingsRelease.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        As for the build pipeline, for the Agent pool, select "Azure Pipelines" and 
+                        for the Agent Service, select the "windows 2019" machine.</p>
+                    <img width="900px" src="themes/img/deploymentPage/agentPoolRelease.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

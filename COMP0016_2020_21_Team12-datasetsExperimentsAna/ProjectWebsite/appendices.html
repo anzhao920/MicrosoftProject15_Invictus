@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appendices -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section appendices-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Appendices</h1>
+        <p>Access more information about the project including user manual, deployment manual and related legal issues.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#userManual">User Manual</a></li>
+                        <li class=""><a href="#deploymentManual">Deployment Manual</a></li>
+                        <li class=""><a href="#legalIssuesAndProcesses">Legal Issues and Processes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">User Manual<span id="userManual" class="anchor-target"></span></h3></div>
+                    <p style="font-size:20px;"><b>User Performance</b></p>
+                    <p style="font-size: larger;">
+                        User needs to provide the urls of the online datasets, he/she wants to download from. After running, he/she is expected to see the downloaded JSON formatted datasets on his/her Azure Blob Storage.
+                    </p>
+                    <p style="font-size: larger;">
+                        The code can only be run in a docker container!
+                    </p>
+                    <p style="font-size: larger;">
+                        To understand the system workflow better, please check ./docs/System Workflow
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Downloading data from URL</b></p>
+                    <p style="font-size: larger;">
+                        Users need to add his/her own azure storage account connection string to the .env file. And also the user needs to add a container name for hloding all data.
+                    </p>
+                    <p style="font-size: larger;">
+                        In order to download the wanted data, users need to add the url links behind the variable "filecontent" in UrlToAzureStorage.py
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>PWA UI Instruction</b></p>
+                    <p style="font-size: larger;">
+                        Our Progressive Web App (PWA) provides various features to interact with the data in Azure Storage.
+                    </p>
+                    <img width="600px" src="themes/img/appendicesPage/pwaHomePage.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        Over the search bar on the top of the UI, you can input a FAD's ID and the system will bring the related data of that particular FAD back to you in the form of table.
+                    </p>
+                    <p style="font-size: larger;">
+                        Below the search bar there are two main section. If you click on them, they will show all the existing data by either map or table. For the map view, you can directly see the FADs on a map, 
+                        with more details shown if you click a particular FAD. As for the table view, it will show you all the current data the Azure storage account have, including all the details.
+                    </p>
+                    <p style="font-size: larger;">
+                        Then at the bottom of the UI, you can also search FAD data according to special searching elements, and the result can be shown by tables or graphs. Detailed explanations shown below. 
+                        In the results page, you can click "Export" to print the results or save it as PDF file.
+                    </p>
+                    <p style="font-size: larger;">
+                        Searching elements explanations: 
+                    </p>
+                    <ul style="font-size: larger;">
+                        <li>
+                            FAD's Locations: <br />
+                            (The FAD records with the same FAD_ID and Location but different data in other aspects will not be shown twice.)
+                            <ul style="margin-top: 10px;">
+                                <li>
+                                    Table View - Shows latitude and longitude
+                                </li>
+                                <li>
+                                    Graph View - Shows histogram of distance away from the capital of Saint Lucia
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        <li style="margin-top: 20px;">
+                            Country of FADs: <br />
+                            (The FAD records with the same FAD_ID and Country but different data in other aspects will not be shown twice.)
+                            <ul style="margin-top: 10px;">
+                                <li>
+                                    Table View - Shows which country does the FADs belong to
+                                </li>
+                                <li>
+                                    Graph View - Shows a bar chart and a pie chart for counties distribution
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        <li style="margin-top: 20px;">
+                            Depth(m) vs. Temperature(℃): <br />
+                            <ul style="margin-top: 10px;">
+                                <li>
+                                    Table View - Shows the depth and the corresponding temperature for all records. Different FADs will be seperated by black lines
+                                </li>
+                                <li>
+                                    Graph View - Shows a line chart of depth as the X-axis and temperature as the Y-axis
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        <li style="margin-top: 20px;">
+                            Depth(m) vs. Salinity: <br />
+                            <ul style="margin-top: 10px;">
+                                <li>
+                                    Table View - Shows the depth and the corresponding salinity for all records. Different FADs will be seperated by black lines
+                                </li>
+                                <li>
+                                    Graph View - Shows a line chart of depth as the X-axis and salinity as the Y-axis
+                                </li>
+                            </ul>
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Deployment Manual<span id="deploymentManual" class="anchor-target"></span></h3></div>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='deployment.html'">Go to our deployment Manual</button>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Legal Issues and Processes<span id="legalIssuesAndProcesses" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        All the background pictures and theme-related pictures are from Pexels, “Legal Simplicity -- All photos and videos on Pexels can be downloaded and used for free”, 
+                        we are also allowed to modify the pictures. Available: https://www.pexels.com/
+                    </p>
+                    <p style="font-size: larger;">
+                        All the data used comes from publicly available from the following websites:
+                    </p>
+                    <a href = "https://www.ncei.noaa.gov/access/world-ocean-database/datawodgeo.html"> https://www.ncei.noaa.gov/access/world-ocean-database/datawodgeo.html </a>
+                    <p></p>
+                    <a href = "https://data.govt.lc/dataset/estimated-fish-landings"> https://data.govt.lc/dataset/estimated-fish-landings </a>
+                    <p></p>
+                    <a href = "https://data.govt.lc/dataset/historical-weather-observations-hewanorra/resource/b2b89104-2b2b-4be3-b13e-45fa69886aa9#{}"> https://data.govt.lc/dataset/historical-weather-observations-hewanorra/resource/b2b89104-2b2b-4be3-b13e-45fa69886aa9#{} </a>
+                    <p></p>
+                    <a href = "https://data.govt.lc/dataset/historical-weather-observations-hewanorra">https://data.govt.lc/dataset/historical-weather-observations-hewanorra </a>
+                    <p></p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>MIT License</b></p>
+                    <p style="font-size: larger;">
+                        Copyright (c) [year] [fullname]
+                    </p>
+                    <p style="font-size: larger;">
+                        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, 
+                        including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, 
+                        subject to the following conditions:
+                    </p>
+                    <p style="font-size: larger;">
+                        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+                    </p>
+                    <p style="font-size: larger;">
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+                        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+                        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                    </p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Library</th>
+                                <th scope="col">Website</th>
+                                <th scope="col">Licence type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">pandas</th>
+                                <td>https://pandas.pydata.org/</td>
+                                <td>BSD 3-Clause "New" or "Revised" License</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">sklearn</th>
+                                <td>https://scikit-learn.org/stable/</td>
+                                <td>Open source, commercially usable - BSD license</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">pathlib</th>
+                                <td>https://pypi.org/project/pathlib/</td>
+                                <td>MIT License</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">flask</th>
+                                <td>https://flask.palletsprojects.com/en/1.1.x/</td>
+                                <td>Copyright 2010 Pallets</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">flask_restful</th>
+                                <td>https://flask.palletsprojects.com/en/1.1.x/</td>
+                                <td>Copyright 2010 Pallets</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">flask_cors</th>
+                                <td>https://flask.palletsprojects.com/en/1.1.x/</td>
+                                <td>Copyright 2010 Pallets</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">requests</th>
+                                <td>https://pypi.org/project/requests/</td>
+                                <td>Apache Software License (Apache 2.0)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">azure.storage.blob</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">urllib.parse</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">dotenv</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">mmap</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">csv</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">subprocess</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">platform</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">re</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">gzip</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">sys</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">json</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">azure.function</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">azure.cosmosdb.table</th>
+                                <td>https://pypi.org/project/azure-cosmosdb-table/</td>
+                                <td>Apache Software License (Apache License 2.0)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">time</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Bootstrap JS and CSS files</th>
+                                <td>https://getbootstrap.com/</td>
+                                <td>MIT License</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Plotly JS file</th>
+                                <td>https://plotly.com/</td>
+                                <td>Copyright 2021 Plotly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

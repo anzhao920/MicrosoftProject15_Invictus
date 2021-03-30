@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <title>FAD Data Graph View</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" type="text/css" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.css">
+        <script type="module" src="pwabuilder-sw-register.js"></script>
+        <script type="module" src="pwabuilder-sw.js"></script>
+        <script src="javascripts/plotly.js"></script>
+
+        <script src="javascripts/FADDataView.js"></script>
+        <style type="text/css">
+            #newDiv {width:800px; page-break-after:always}
+        </style>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <button type="button" class="btn btn-primary" onclick="_export()">Export</button>
+        <!-- export startpoint -->
+        <div id="parent"></div>
+        <!-- export endpoint -->
+        <script>
+            getFADData().then(function (data) {
+                var FADInfos = JSON.parse(data);
+                var searchElements = window.location.href.split("?")[1].split(",");
+
+                if (searchElements.includes('location')) {
+                    var newDiv = createDiv();
+                    const CENTERLAT = 14.01251;
+                    const CENTERLON = -60.98949;
+                    var dists = [];
+                    var lastFADCruiseID;
+                    for (var i = 0; i < FADInfos.length; i++) {
+                        var countryName = FADInfos[i].ISO_country;
+                        var currentFADCruiseID = FADInfos[i].FADId;
+                        if (currentFADCruiseID == lastFADCruiseID) {
+                            continue;
+                        } else {
+                            lastFADCruiseID = currentFADCruiseID;
+                        }
+                        var lat = FADInfos[i].Latitude;
+                        var lon = FADInfos[i].Longitude;
+                        var xDistance = Math.abs(CENTERLAT - lat) * 111;
+                        var yDistance = Math.abs(CENTERLON - lon) * 111 * Math.cos(CENTERLON);
+                        var dist = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+                        dists[i] = dist;
+                    }
+
+                    var data = [ {x: dists, type: 'histogram', marker: {line: {width: 1}}} ];
+                    var layout = {title: 'Distribution of numbers of FAD\'s distance away from the capital (KM)'};
+                    Plotly.newPlot(newDiv, data, layout);
+                }
+
+                if (searchElements.includes('country')) {
+                    var newDiv1 = createDiv();
+                    var newDiv2 = createDiv();
+                    var countriesName = new Array();
+                    var countriesFADNum = new Array();
+                    var lastFADCruiseID;
+                    for (var i = 0; i < FADInfos.length; i++) {
+                        var countryName = FADInfos[i].ISO_country;
+                        var currentFADCruiseID = FADInfos[i].FADId;
+                        if (currentFADCruiseID == lastFADCruiseID) {
+                            continue;
+                        } else {
+                            lastFADCruiseID = currentFADCruiseID;
+                        }
+                        var flagNameFound = false;
+                        for (var countryNameIndex = 0; countryNameIndex < countriesName.length; countryNameIndex++) {
+                            if (countryName == countriesName[countryNameIndex]) {
+                                countriesFADNum[countryNameIndex]++;
+                                flagNameFound = true;
+                                break;
+                            }
+                        }
+                        if (flagNameFound == false) {
+                            countriesName.push(countryName);
+                            countriesFADNum.push(1);
+                        }
+                    }
+
+                    var dataBarChart = [ {type: 'bar', x: countriesName, y: countriesFADNum} ];
+                    var dataPieChart = [ {type: 'pie', labels: countriesName, values: countriesFADNum} ]
+
+                    var layoutBarChart = { 
+                    title: 'FAD Number per Country',
+                    font: {size: 18}
+                    };
+                    var layoutPieChart = { 
+                    title: 'Weight of Each Country',
+                    font: {size: 18}
+                    };
+
+                    var config = {responsive: true}
+
+                    Plotly.newPlot(newDiv1, dataBarChart, layoutBarChart, config);
+                    Plotly.newPlot(newDiv2, dataPieChart, layoutPieChart, config);
+                }
+
+                if (searchElements.includes('depthVsTemp')) {
+                    var newDiv = createDiv();
+                    var depth = new Array();
+                    var temp = new Array();
+                    for (var i = 0; i < FADInfos.length; i++) {
+                        var insertPoint = -1;
+                        var flagEqual = false;
+                        var currentDepth = FADInfos[i]["depth_m_"];
+                        var currentTemp = FADInfos[i].Temp;
+                        if (currentTemp == -99.99) {
+                            continue;
+                        }
+                        for (var j = 0; j < depth.length; j++) {
+                            if (parseFloat(currentDepth) < parseFloat(depth[j])) {
+                                insertPoint = j;
+                                break;
+                            } else if (currentDepth == depth[j]) {
+                                insertPoint = j;
+                                flagEqual = true;
+                                break;
+                            }
+                        }
+                        
+                        if (flagEqual == true) {
+                            var corspTemp = temp[insertPoint];
+                            var newTemp = (FADInfos[insertPoint].Temp + corspTemp) / 2
+                            temp[insertPoint] = newTemp;
+                        } else {
+                            if (insertPoint == -1) {
+                            depth.push(currentDepth);
+                            temp.push(currentTemp);
+                            } else {
+                                depth.splice(insertPoint, 0, currentDepth);
+                                temp.splice(insertPoint, 0, currentTemp);
+                            }
+                        }
+                    }
+
+                    var data = [ {type: 'scatter', x: depth, y: temp, connectgaps: true} ];
+
+                    var layout = { 
+                        title: 'Average [depth(m) vs. Temp(℃)]',
+                        font: {size: 18},
+                        xaxis: {
+                            title: 'depth(m)',
+                        },
+                        yaxis: {
+                            title: 'Temp(℃)',
+                        }
+                    };
+
+                    var config = {responsive: true}
+                    Plotly.newPlot(newDiv, data, layout, config);
+                    
+                }
+
+                if (searchElements.includes('DepthVsSalinity')) {
+                    var newDiv = createDiv();
+                    var depth = new Array();
+                    var sal = new Array();
+                    for (var i = 0; i < FADInfos.length; i++) {
+                        var insertPoint = -1;
+                        var flagEqual = false;
+                        var currentDepth = FADInfos[i]["depth_m_"];
+                        var currentSal = FADInfos[i].Sal;
+                        if (currentSal == -99.99) {
+                            continue;
+                        }
+                        for (var j = 0; j < depth.length; j++) {
+                            if (parseFloat(currentDepth) < parseFloat(depth[j])) {
+                                insertPoint = j;
+                                break;
+                            } else if (currentDepth == depth[j]) {
+                                insertPoint = j;
+                                flagEqual = true;
+                                break;
+                            }
+                        }
+                        
+                        if (flagEqual == true) {
+                            var corspSal = sal[insertPoint];
+                            var newSal = (FADInfos[insertPoint].sal + corspSal) / 2
+                            sal[insertPoint] = newSal;
+                        } else {
+                            if (insertPoint == -1) {
+                            depth.push(currentDepth);
+                            sal.push(currentSal);
+                            } else {
+                                depth.splice(insertPoint, 0, currentDepth);
+                                sal.splice(insertPoint, 0, currentSal);
+                            }
+                        }
+                    }
+
+                    var data = [ {type: 'scatter', x: depth, y: sal, connectgaps: true} ];
+
+                    var layout = { 
+                    title: 'Average [depth(m) vs. Salinity]',
+                    font: {size: 18},
+                    xaxis: {
+                        title: 'depth(m)',
+                    },
+                    yaxis: {
+                        title: 'Salinity',
+                    }
+                    };
+
+                    var config = {responsive: true}
+                    Plotly.newPlot(newDiv, data, layout, config);
+                    
+                }
+
+                function createDiv() {
+                    var parentDiv = document.getElementById("parent");
+                    var newDiv = document.createElement("div");
+                    newDiv.id = "newDiv";
+                    parentDiv.appendChild(newDiv);
+                    return newDiv;
+                }
+            })
+        </script>
+    </body>
+</html>
+

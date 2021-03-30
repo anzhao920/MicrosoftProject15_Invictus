@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Requirements -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section requirements-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Requirements</h1>
+        <p>Our mean goal is to provide a high usability data management and visualization tool. So the requirements is generally three parts: data processing, data storage and data visualization.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#projectBackgroundAndClientIntroduction">Project Background & Client Introduction</a></li>
+                        <li class=""><a href="#projectGoals">Project Goals</a></li>
+                        <li class=""><a href="#requirementGathering">Requirement Gathering</a></li>
+                        <li class=""><a href="#persona">Persona</a></li>
+                        <li class=""><a href="#useCases">Use Cases</a></li>
+                        <li class=""><a href="#MoSCoWList">MoSCoW Requirement List</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Project Background & Client Introduction<span id="projectBackgroundAndClientIntroduction" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        We works on Microsoft project 15 open datasets. The mean purpose of Project 15 is "Accelerating Environmental Conservation & Ecosystem Sustainability with the Internet of Things (IoT)". 
+                        For our product, we focus on the dataset part of it. More specifically, we provide a service for data scientists in Saint Lucia to track Fish Aggregating Devices (FAD) and provide data operator and 
+                        visualiser for FAD data. The existing problem is that people who are working on the FADs does not have enough computer science skills to operate a database and visualization tools by themselves.
+                    </p>
+                    <p style="font-size: larger;">
+                        Our clients are Project 15 team members from Microsoft. They are working on improveing the things related to Project 15. We also have "inner" clients which are the organisation that are working on the FADs.
+                    </p>
+                    <p style="font-size: larger;">Core goals of project 15 as a whole: </p>
+                    <img height="370px" width="658px" src="themes/img/requirementsPage/P15-OpenPlatform-CoreGoals.png">
+                    <p style="margin-top: 15px; font-size: larger;">Project 15 webpage: <a href="https://microsoft.github.io/project15/">https://microsoft.github.io/project15/</a></p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Project Goals<span id="projectGoals" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        Our mean goal is to allow data scientists to access and use the data of FADs easier. 
+                        In details, by our FAD data services, they can easily upload data, do actions on them such as addition or deletion via Azure storage account, and they may also visualise the existing data by maps, tables or graphs.
+                    </p>
+                    <img height="370px" width="800px" src="themes/img/requirementsPage/projectGoals.png">
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Requirement Gathering<span id="requirementGathering" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">We gathered the requirements mainly from three aspects: messages and docs from our clients, meeting with our clients and online searching. </p>
+                    <p style="font-size: larger;">Project description from our clients: </p>
+                    <img height="650px" width="850px" src="themes/img/requirementsPage/requirementsFromClients.png">
+                    <p style="margin-top: 15px; font-size: larger;">
+                        We also gathered requirements from the meetings with our clients and internet. During the meeting, our clients discussed with us about the current problems, possible solutions and our expected achievements.
+                        We also accessed ocean data website such as National Oceanic and Atmospheric Administration 
+                        (<a href="https://www.noaa.gov/education/resource-collections/ocean-coasts">https://www.noaa.gov/education/resource-collections/ocean-coasts</a>). The details of the requirements we 
+                        gathered from three aspects will be shown in the MoSCoW requirement list below.
+                    </p>
+                    <p style="font-size: larger;">
+                        To understand the target users, we used indirect observation: we analyzed the surveys that Microsoft conducted to see why conservational data projects might fail. 
+                        To further decide how to build the data import feature, we chose to conduct a semi-structured interview because it would help us to both answer our questions and probe where more information is required.
+                    </p>
+                    <img height="400px" width="900px" src="themes/img/requirementsPage/requirementsSurveys.png">
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Persona<span id="persona" class="anchor-target"></span></h3></div>
+                    <img height="625px" width="900px" src="themes/img/requirementsPage/persona.png">
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Use Cases<span id="useCases" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        Our project focus on helping FAD data scientists. The main use case is to let them store, manage and display their data by a few mouse clicks. 
+                        We provide a platform to operating data, they can access existing data or add new data to the system. The data can then be displayed by maps, tables or graphs. 
+                        By these features, even without much computer since skills, data scientists can still easily work with the data in the way they want.
+                    </p>
+                    <p style="font-size: larger;">
+                        Another possible use case is that if data scientists or their organisations allow the public to get the information of the datasets, 
+                        then they can post the web app's link so people can use it to visualise data.
+                    </p>
+                    <p style="font-size: larger;">Use case diagram: </p>
+                    <img height="430px" width="900px" src="themes/img/requirementsPage/useCaseDiagram.png">
+                    <p style="margin-top: 15px; font-size: larger;">Use case list: </p>
+                    <img height="485px" width="700px" src="themes/img/requirementsPage/useCaseList.png">
+                </div>
+
+                <div class="docs-section" style="margin-bottom: 50px;">
+                    <div class="page-header"><h3 class="docs-heading">MoSCoW Requirement List<span id="MoSCoWList" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">Functional requirements: </p>
+                    <img width="900px" src="themes/img/requirementsPage/MoSCoWRequirementsFonctional.png">
+                    <p style="margin-top: 15px; font-size: larger;">Non-functional requirements: </p>
+                    <img width="900px" src="themes/img/requirementsPage/MoSCoWRequirementsNonFonctional.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

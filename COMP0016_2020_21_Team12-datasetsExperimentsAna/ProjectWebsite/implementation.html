@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Implementation -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section implementaion-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Implementation</h1>
+        <p>Our solution consists of a data pipeline that downloads, processes and stores datasets and a progressive web app, which displays data in insightful ways.</p>
+    </div>
+
+</div>
+<!--------header end-------->
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#downloadingParsingAndConverting">Downloading, Parsing & Converting</a></li>
+                        <li class=""><a href="#optionallyEnhancingTheDataset">Optionally Enhancing the Dataset</a></li>
+                        <li class=""><a href="#uploadingTheDataToBlobStorage">Uploading the Data to Blob Storage</a></li>
+                        <li class=""><a href="#storingInAzureTableStorage">Storing in Azure Table Storage</a></li>
+                        <li class=""><a href="#progressiveWebApp">Progressive Web App</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Downloading, Parsing & Converting<span id="downloadingParsingAndConverting" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        We support downloading data from given urls. The data is downloaded by using Python' requests library as a stream. After this is done, depending on the extension of data, 
+                        we support both CSV and WOD files (including CTD, OSD and MBT), the data is either converted to CSV file first then to Json file or it is directly converted to Json.
+                    </p>
+                    <p style="font-size: larger;">
+                        If the extension is CSV, then the data are simply converted into JSON objects. The download stream is firstly written into a CSV file. 
+                        Then by using the mmap library supported by Python, the CSV file is opened in memory. Using this library to read each line from the CSV file, 
+                        decoding them to utf-8 by Python byte.decode() and filter off any empty strings in the fle. Using json.dumps() to format each line into json objects.
+                    </p>
+                    <p style="font-size: larger;">
+                        In the case of WOD(World Ocean Database), the files contain ocean data measured at standard and observed depth level for different regions organised in squares of 10 degrees latitude and longitude.
+                    </p>
+                    <p style="font-size: larger;">
+                        In the region containing Saint Lucia, 7 dataset types are found such as OSD (containing bottle, low-resolution CTD and XCTD, and plankton data) and XBT (containing expendable bathythermograph data). 
+                        For more details, please check <a href="https://www.ncei.noaa.gov/access/world-ocean-database/bin/getgeodata.pl?Depth=O&WorldOcean.x=612&WorldOcean.y=264">https://www.ncei.noaa.gov/access/world-ocean-database/bin/getgeodata.pl?Depth=O&WorldOcean.x=612&WorldOcean.y=264</a>.
+                    </p>
+                    <p style="font-size: larger;">
+                        The files are downloaded in .gz formats, decompressed inside Python using the gzip Python library and parsed into CSV by running the C script provided by the WOD site. From CSV, the file is converted to JSON as previously stated.
+                    </p>
+                    <p style="font-size: larger;">
+                        Because the C script can filter the data based on the information read from standard input, we modified the program to read the commands from a text file, which can be automatically or manually changed. 
+                        In this way, a user can simply update the .txt file, without knowing how the Python or C programs work.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Optionally Enhancing the Dataset<span id="optionallyEnhancingTheDataset" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        Before converting the CSV files to JSON, they can optionally be restricted to a specific region and/or enhanced with predicted weather data.
+                    </p>
+                    <p style="font-size: larger;">
+                        For our project, we only needed information specific to Saint Lucia. Thus, we implemented a point in polygon algorithm similar to the one presented in https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/. 
+                        Given a CSV file, the program (SaintLuciaDataset/createSaintLuciaCSV.py) checks for each row if the location it represents is inside a specific polygon region. 
+                        The polygon region is read from a text file, which contains on each line the latitude and longitude coordinates of the vertices. An example can be found at SaintLuciaDataset/StLuciaCoords.
+                    </p>
+                    <p style="font-size: larger;">
+                        To provide an example of how the data can be enhanced, we implemented a simple SVM prediction model which adds wind speed and average rain.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Uploading the Data to Blob Storage<span id="uploadingTheDataToBlobStorage" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        After the deployment is finished, the code first uses load_dotenv() from Python dotenv library to get the environment variables set by users in the .env file.
+                    </p>
+                    <p style="font-size: larger;">
+                        The code uses the azure.storage.blob library to connect to the blob service client by the connection string provided in the .env file. 
+                        It creates a container client that creates a container in azure service with the specified container name in .env file. 
+                        Then it creates a blob client which creates a blob file inside the container with the name as the filename. Using upload_blob() API to push the processed json objects to the created blob.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Storing in Azure Table Storage<span id="storingInAzureTableStorage" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        We found out there were various types of datasets that could be used to store our data in Azure datasets, for instance: SQL, Table and Queue. 
+                        The team decided to use Table Storage as the dataset because there was no need to query and analyze data from the datasets. The only feature we acquired was to filter off data, 
+                        which can be simply done with Table Storage.
+                    </p>
+                    <p style="font-size: larger;">
+                        After deployment is set, once there is any creation of blobs inside the specified container, the azure function would automatically convert the blob to a table storage.
+                    </p>
+                    <p style="font-size: larger;">
+                        The azure function we use, is detecting any events happening to the storage account. At deployment, we set the event to be only BlobCreated. 
+                        The azure.function library Python supports parsing event's event_type (this case we want the type of event to be  Microsoft.Storage.BlobCreated) and event_subject (which contains the name of the container where event happens and the name of the blob created).
+                        Meantime, the code connects to the TableService using the connection string. Thereafter, the service creates a Table using the blob name as the table name.
+                    </p>
+                    <p style="font-size: larger;">
+                        In order to push the contents from the json object to the table, we need to create entities. Each entity, specified in azure.cosmosdb.table library, must have PartitionKey and RowKey. 
+                        We use the table name as the PartitionKey for most of the data, except the data has 'Cruise_ID' in it. By giving each content from the json object with its according PartitionKey and RowKey, 
+                        the entities are therefore added to a batch list.
+                    </p>
+                    <p style="font-size: larger;">
+                        TableBatch() is used to send at most 100 table operations to the table service at one time. Because of this limit, we separate the entities in the list into children lists with maximum size 100. 
+                        Then use the API TableService.commit_batch() to send the batched operations (at most 100 at once) to the table;  therefore, the data (entities) in the table are added. 
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Progressive Web App<span id="progressiveWebApp" class="anchor-target"></span></h3></div>
+                    <p style="font-size: larger;">
+                        Our Progressive Web App takes data from Azure Storage using our Flask API and displays it using maps, tables or charts.
+                    </p>
+                    <p style="font-size: larger;">
+                        By following the tutorial in <a href="https://docs.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/get-started">https://docs.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/get-started</a>, we started with creating a simple Node Express app. 
+                        To make the app a PWA, three main requirements need to be satisfied: it must be served over HTTPS, have a web app manifest and register a service worker with a fetch event handler.
+                    </p>
+                    <p style="font-size: larger;">
+                        The web app manifest is a JSON file containing metadata about the app. We added app name, description, theme colour and an icon, which will appear on users' screen if installed.
+                    </p>
+                    <p style="font-size: larger;">
+                        The service worker was implemented starting from the Cache-first service worker provided by PWA Builder https://www.pwabuilder.com/serviceworker. 
+                        The code uses the pwa-update component to register the service worker, tell the user when there is an update available and when the PWA can be used offline. 
+                        It uses WorkBox https://developers.google.com/web/tools/workbox/modules/workbox-strategies to pre-cache all the content so that it's available offline. On top of it, we added push notifications, 
+                        error handling and cache versioning.
+                    </p>
+                    <p style="font-size: larger;">
+                        The service worker was implemented starting from the Cache-first service worker provided by PWA Builder https://www.pwabuilder.com/serviceworker. 
+                        The code uses the pwa-update component to register the service worker, tell the user when there is an update available and when the PWA can be used offline. 
+                        It uses WorkBox https://developers.google.com/web/tools/workbox/modules/workbox-strategies to pre-cache all the content so that it's available offline. On top of it, we added push notifications, 
+                        error handling and cache versioning. Using push and notificationClick events, push notifications sent from the server are displayed on users' screens.  
+                    </p>
+                    <p style="font-size: larger;">
+                        The error handling ensures that when a fetch event is unsuccessful, an appropriate message is shown to the user. For example, if an offline user tries to access a resource that is not cached, 
+                        depending on the resource type, either an HTML fallback page will be displayed or a simple error image.  
+                    </p>
+                    <p style="font-size: larger;">
+                        We used cache versioning to ensure that when the app content is updated, the cache is updated and changes are reflected. More specifically, when content is changed and the service worker is activated, 
+                        the modified data is added to the new cache. For efficiency, all previous caches are then deleted.
+                    </p>
+                    <p style="font-size: larger;">
+                        Additionally, we added authentication with Microsoft accounts using the pwa-auth component provided by pwabuilder. To get authentication tokens, 
+                        we created an Azure App Registration resource and set the main page of our app as the URL which will return the authentication response.The app listens for the "signin-completed" event, 
+                        which will redirect users to their logged-in page. 
+                    </p>
+                    <p style="font-size: larger;">
+                        Once logged-in, the user can search for data specific to a FAD id, view a map with the locations of the existing FADs, as well as tables and charts.
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>Elements in the PWA</b></p>
+                    <p style="font-size: larger;">
+                        Lots of elements of our PWA use Bootstrap, an open-source JavaScript and CSS file provider, with tons of available themes and components.
+                    </p>
+                    <p style="font-size: larger;">
+                        On the top of the app there is a search bar to type in the ID of the FAD you want to search. Then it will show the information of the specific FAD. We used “Button addons” of “input groups” from Bootstrap library. 
+                        In general, it combines a “input” tag and a “button” tag to form the search bar. When you input the ID and click search, a JavaScript function will then call search by ID result page, 
+                        with “?” added in the end followed by the ID you typed in. The things after “?” in a URL will not affect the call of a certain page, however it can pass values. Then, in the search by ID result page, 
+                        we use ( window.location.href.split("?")[1] ) to get the values behind “?”, and use it to search the specific FAD. For this part’s searching result, we use table view, the details of implementation will follow.
+                    </p>
+                    <p style="font-size: larger;">
+                        Below the search bar there are two blocks, where you can see all the current existing data by Azure Maps or Table.
+                    </p>
+                    <p style="font-size: larger;">
+                        The maps visualization has a search bar, a list of nearby FADs, and markers on the map for the FADs' locations. When the page is initialised, 
+                        the Azure map is loaded with additional components such as layers and a datasource. Then, using the API, the javascript file will fetch the FAD JSON dataset, parse it, store the necessary information, 
+                        and add the unique point locations to the map's datasource. In addition, an invisible pop-up window is created. Concretely, when a user enters a location in the search bar, for example, "Saint Lucia", 
+                        a search will be performed and the map will re-centre to the found location. Additionally, the FADs visible on the map will be displayed in the menu panel sorted increasingly by the distance to the centre. 
+                        If a user clicks on the icon of a FAD, the pop-up window will be displayed with details about the FAD, a link for additional information, and a checkbox. If a user clicks on the checkbox, 
+                        the previous locations of that FAD will be displayed as blue markers, linked together by a dashed line. The past locations are retrieved using an API call for data, given the id of the particular FAD. 
+                        If the checkbox is unchecked, the line will be set to invisible. Thus, a subsequent check on the box will simply set the line to visible again, instead of reconstructing it. For efficiency, 
+                        rather than creating a pop-up for each FAD, the same object will be updated and reused. Because the HTML is dynamically modified, a dictionary is used to keep track of the states of FAD's checkboxes. 
+                        For better visualization, when the zoom level of the map is below a chosen value, the FAD icons will be grouped in clusters, and only a marker with the number of FADs around that location will be shown.
+                    </p>
+                    <p style="font-size: larger;">
+                        At the bottom of the page, you can select the particular searching elements like locations and countries of the FADs. Then you can choose to display the data by table or graphs. 
+                        We used “Checkbox” button groups in Bootstrap library. It combines button-like checkboxes into a seamless looking button group. We use a list to pass required searching elements to the searching result page. 
+                        Everytime the user selects an element, the corresponding keyword will be pushed to the list (A second click will remove it of course). Then when the user clicks the view button, 
+                        the list will be assigned to the result page URL after a “?”. We use the URL ( html file name + ? + the list ) to call the corresponding data views page and tell it which part of data should be displayed. 
+                        We then use ( window.location.href.split("?")[1].split(",") ) to get the list behind the actual URL. After that, we use ( arr.includes(itemInList) ) to see whether a particular searching element is in the list or not. 
+                        If it is in the list, we will include it in the result table.
+                    </p>
+                    <p style="font-size: larger;">
+                        For table view we use the content “Tables” in Bootstrap library. We have a "table" HTML elements that are static in the table view page. Then according to the user's need, 
+                        the app will figure out the number of columns needed. (e.g. for location we need at least FAD_ID, Latitude and Longitude etc., which means 3 columns, 
+                        however we may also include other useful info such as data and time) Then we will get data from our database, add the received data to the table by creating new rows. 
+                        More information of how we get and process incoming data will follow.
+                    </p>
+                    <p style="font-size: larger;">
+                        For Graph view, we use “plotly.js”, which is another open-source JavaScript library that focuses on generating graphs. Basically, we pass our data into one or two keys in a dictionary, 
+                        with other keys stating the type of graph (e.g. bar chart or pie chart etc.). Then using existing functions in plotly.js, it will be displayed via graphs.
+                    </p>
+                    <p style="margin-top: 35px; font-size:20px;"><b>API for getting Data</b></p>
+                    <p style="font-size: larger;">
+                        Using the express-http-proxy npm module, web calls to /API/ will be redirected to the Flask application, which is implemented in app.py. Using the app.route annotation, 
+                        all calls to API/StLuciaBorder will call the index() function, which returns a set of pairs of latitude and longitude corresponding to the St.Lucia border polygon. Using the FAD class, 
+                        which inherits Resource from flask_restful, all get and put requests to '/API/FAD/index' will call the corresponding methods. For instance, GET requests to '/API/FAD/index' will return a JSON object with all information found for the FAD with id index. 
+                        If no FAD was found, the 404 error will be sent with an appropriate message. Likewise, PUT requests to /API/FAD/index will add the information sent as arguments to the local data corresponding to the FAD with id index. 
+                        If the provided data is invalid or incomplete, the 400 error will be sent.
+                    </p>
+                    <p style="font-size: larger;">
+                        The flask application was designed to decouple the logic of internal storage from the data retrieval process. For instance, using Azure Table Storage instead of file storage would require minor changes to app.py, 
+                        such that users can switch between database and local file storage at any time. The file storage version, implemented in getFADs.py, uses pandas to read and update the dataset in CSV format. The other version, 
+                        implemented in getFADsTableStorage.py, performs reads and writes to our database using the Azure Cosmos DB Python client library.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

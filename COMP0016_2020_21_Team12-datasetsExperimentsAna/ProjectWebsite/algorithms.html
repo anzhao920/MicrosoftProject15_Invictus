@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Algorithms -- FAD Open Datasets</title>
+
+    <script src="js/html5shiv.min.js"></script>
+
+    <script src="js/respond.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="themes/css/home.css" rel="stylesheet"  type="text/css">
+
+</head>
+<body>
+
+<!--------header begin-------->
+<div class=" container-fluid header-main header-section algorithms-background">
+    <div class="header-back"></div>
+    <nav class="navbar navbar-default  navbar-brands  navbar-abouts">
+        <div class="container">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016" style="font-size:large; color:orange;">UCL COMP0016 Team12</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="index.html" title="Home">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="requirements.html" title="Requirements">Requirements</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="research.html" title="Research">Research</a>
+                    </li>
+                    <li class="active">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="algorithms.html" title="Research">Algorithms</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="UIDesign.html" title="UI Design">UI Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="systemDesign.html" title="System Design">System Design</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="implementation.html" title="Implementation">Implementation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="testing.html" title="Testing">Testing</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="evaluation.html" title="Evaluation">Evaluation</a>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" aria-haspopup="true"  class="dropdown-toggle" href="appendices.html" title="Appendices">Appendices</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container container-zindex cover-container am-animation-scale-up" data-am-scrollspy="{animation: 'scale-up', repeat: false}">
+        <h1 style="margin-bottom: 50px;"><span><i>FAD Open Datasets</i></span><br>Algorithms</h1>
+        <p>To provide an example of how datasets can be used, we implemented a point-in-polygon algorithm that filters location data by a polygon.
+            Likewise, we designed a simple Machine Learning model for augmenting the datasets with weather information.</p>
+    </div>
+
+</div>
+<!--------- header  End------------->
+
+<div style="height:30px;"></div>
+
+
+<div class="container docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div role="complementary" class="sidebar hidden-print affix-top">
+                <div id="navigation">
+                    <ul class="nav sidenav"><li class="active"><a href="#point-in-polygon">Filtering data by polygon</a></li>
+                        <li class=""><a href="#polygon-usage-details">Usage details</a></li>
+                        <li class=""><a href="#ML-model">ML weather prediction model</a></li>
+                        <li class=""><a href="#ML-usage-details">Usage details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div role="main" class="col-md-9">
+            <div class=" docs-content">
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Filtering data by polygon<span id="point-in-polygon" class="anchor-target"></span></h3></div>
+                    <p>
+                        By providing a CSV file with location coordinates and a text file with the coordinates of the desired polygon region, the point in polygon algorithm creates a CSV file containing only the data from locations inside the provided polygon region.
+                    </p>
+                    <p>
+                        For each point in the dataset, the algorithm checks in linear time the number of intersections of an "infinitely" long horizontal line starting at that particular point with the edges of the polygon. If the number of intersections is odd or the point lies on an edge of the polygon, the point is added to the filtered dataset. Otherwise, the point is outside the region and thus ignored.
+                    </p>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Usage details<span id="polygon-usage-details" class="anchor-target"></span></h3></div>
+                    <p>
+                     To filter your csv dataset using our point-in-polygon algorithm, in the SaintLuciaDataset/createSaintLuciaCSV.py file
+                    you have to set the following variables:
+                    </p>
+                    <p>The path to the file containing the coordinates of the polygon to filter data by.
+                        For each polygon vertex, the coordinates must be written on separate lines in the format
+                        "latitude longitude".
+                        Please check the example in the GitHub repository for more details.
+                    </p>
+                    <code class="lang-less">
+                        <p style="margin-top: 11px;">line 6: coordsFilePath = </p>
+                    </code>
+                    <p>The path of the csv file containing location data:</p>
+                    <code class="lang-less">
+                        <p style="margin-top: 11px;">line 25: locationsDataCSVFilePath = </p>
+                    </code>
+                    <p>The path to the file where the filtered data should be stored:</p>
+                    <code class="lang-less">
+                        <p style="margin-top: 11px;">line 43: filterdCSVFilePath = </p>
+                    </code>
+                </div>
+
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">ML weather prediction model<span id="ML-model" class="anchor-target"></span></h3></div>
+                    <p>The ML model was implemented as a regression algorithm, with the average wind speed as the explained (dependent) variable, and the month and year as the regressors (independent variables).</p>
+                    <p>Two models were provided: a linear regression, and an SVM model.
+                        For both models, the data was normalised by subtracting the mean and dividing by the standard deviation.
+                        We used 70 % of the data for the training process, and 30 % for testing the performance.</p>
+                    <p>Because the relationship between the variables is unlikely to be linear, we used the SVM model, with a radial basis function kernel, as the main algorithm. The "kernel trick" allows performing non-linear classification by mapping the inputs into high-dimensional feature spaces.
+                        The linear regression model was used as a means of comparing the performances.</p>
+                    <p>Note: Because AI analysis was not the scope of our project, and due to the lack of relevant data, the model was designed as a proof of concept. 
+                        We acknowledge that our model is neither complete nor significant.
+                        As a consequence, the results were not meaningful: the mean absolute error was 1.4996 and the R^2 score was 0.3384.
+                    </p>
+                <div class="docs-section">
+                    <div class="page-header"><h3 class="docs-heading">Usage details<span id="ML-usage-details" class="anchor-target"></span></h3></div>
+                    <p> To use the algorithm from SaintLuciaDataset/mockValuesML.py on your dataset, you have to change the values of two variables.
+                        To set the value of the filepath of your dataset, change line 118:
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">line 118: csvDataFilePath = </p>
+                        </code>
+                        Similarily, set the value of to the filepath where you want the predicted data to be stored.
+                        </p>
+                        <code class="lang-less">
+                            <p style="margin-top: 11px;">line 137: enhancedDataFilePath = </p>
+                        </code>
+                    <p>
+                        The code uses an SVM model, to change it to linear regression, set the value of modelType (line 10) to 'linearRegression'.
+                    </p>
+                    <code class="lang-less">
+                        <p style="margin-top: 11px;">line 10: modelType = 'linearRegression' </p>
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------footer begin-------->
+<footer class="main-footer  main-footer1" style="margin-top: 50px;">
+    <div class="recent-single-post"><a class="post-title" href="https://www.ucl.ac.uk/module-catalogue/modules/systems-engineering-COMP0016">UCL CS COMP0016 Team12</a><div class="date" style="padding-top:10px;">Copyright © 2021 </div></div>
+</footer>
+<!--------footer End-------->
+
+<script type="text/javascript">
+    /*!
+     * Adapted from Bootstrap docs JavaScript
+     */
+
+
+    !function ($) {
+
+        $(function () {
+
+            // IE10 viewport hack for Surface/desktop Windows 8 bug
+            //
+            // See Getting Started docs for more information
+            if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement('style')
+                msViewportStyle.appendChild(
+                        document.createTextNode(
+                                '@-ms-viewport{width:auto!important}'
+                        )
+                )
+                document.querySelector('head').appendChild(msViewportStyle)
+            }
+
+            var $window = $(window)
+            var $body   = $(document.body)
+
+            $body.scrollspy({
+                target: '.sidebar',
+                offset: 400 // required to select the right thing. if this is smaller then you are at the top of one section
+                // but the next section is highlighted
+            });
+
+            $window.on('load', function () {
+                $body.scrollspy('refresh')
+            });
+
+            $('.docs-container [href=#]').click(function (e) {
+                e.preventDefault()
+            });
+
+
+            $('.source-link').each(function () {
+                var id = $(this).data('content');
+                var content = $('<span>').append($('#' + id)).html();
+                $(this).attr('data-content', content);
+
+                // Keep popovers open when hovered
+                $(this).popover({
+                    trigger: 'manual',
+                    container: 'body',
+                    placement: 'left',
+                    template: '<div class="popover popover-source"> <div class="arrow"></div> <div class="popover-inner"> <h3 class="popover-title"></h3> <div class="popover-content"> <p></p> </div> </div> </div>',
+                    html: true,
+                    delay: {show: 50, hide: 750}
+                }).on('mouseenter', function () {
+                    var self = this;
+                    $(this).popover('show');
+                    $(this).addClass('active');
+                    $(this).addClass('popover-source');
+
+                    $('.popover').on('mouseleave', function () {
+                        $(self).popover('hide');
+                        $(self).removeClass('active');
+                    });
+
+                }).on('mouseleave', function () {
+                    var self = this;
+                    setTimeout(function () {
+                        if (!$('.popover:hover').length) {
+                            $(self).popover('hide');
+                            $(self).removeClass('active');
+                        }
+                    }, 100);
+                });
+            });
+
+
+            // back to top
+            setTimeout(function () {
+                var $sideBar = $('.sidebar')
+
+                $sideBar.affix({
+                    offset: {
+                        top: function () {
+                            var offsetTop      = $sideBar.offset().top
+                            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                            var navOuterHeight = $('.docs-nav').height()
+
+                            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+                        },
+                        bottom: function () {
+                            return (this.bottom = $('.footer').outerHeight(true))
+                        }
+                    }
+                })
+            }, 100);
+
+            setTimeout(function () {
+                $('.top').affix()
+            }, 100);
+
+        })
+
+    }(jQuery)
+</script>
+
+</body>
+</html>

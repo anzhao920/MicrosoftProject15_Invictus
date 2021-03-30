@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>All FAD Data Table View</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" type="text/css" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.css">
+        <script type="module" src="pwabuilder-sw-register.js"></script>
+        <script type="module" src="pwabuilder-sw.js"></script>
+        <script src="bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+
+        <script src="javascripts/FADDataView.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <table id="FADDataTable" class="table table-striped table-hover">
+            <thead>
+                <tr id="tableTitle"></tr>
+            </thead>
+            <tbody>
+            <tr></tr>
+            </tbody>
+        </table>
+        <script>
+            getFADData().then(function (data) {
+            var FADInfos = JSON.parse(data);
+            
+            var table = document.getElementById("FADDataTable");
+            var tableTitle = document.getElementById("tableTitle");
+            var columnNum = 1;
+            
+            for (var key in FADInfos[0]) {
+                tableTitle.appendChild(addNewTitle(key));
+                columnNum++;
+            }
+            var lastFADCruiseID;
+            for (var i = 0; i < FADInfos.length; i++) {
+                var currentFADCruiseID = FADInfos[i].Cruise_ID;
+                if (currentFADCruiseID != lastFADCruiseID) {
+                    var rowb = table.insertRow(table.rows.length-1);
+                    rowb.setAttribute("class", "table table-dark");
+                    for (var j = 0; j < columnNum; j++) {
+                        var cb = rowb.insertCell(j);
+                    }
+                    lastFADCruiseID = currentFADCruiseID;
+                }
+                var row = table.insertRow(table.rows.length-1);
+                var insertPoint = 0;
+                for (var key in FADInfos[i]) {
+                    var c = row.insertCell(insertPoint);
+                    insertPoint++;
+                    c.innerHTML = FADInfos[i][key];
+                }
+            }
+        })
+           
+            
+        </script>
+    </body>
+</html>
+

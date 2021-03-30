@@ -1,0 +1,6 @@
+[config]
+SCM_DO_BUILD_DURING_DEPLOYMENT=true
+AZURE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=victorweng;AccountKey=wHdjF1naFXOGqss3rbRXeF5IA68WRy/4R4C6ijWW07pH7j3/i3ZMFNZJa9dXGBnBEOMQ3jqj+BGsiGfeT10Zrg==;EndpointSuffix=core.windows.net
+AZURE_CONTAINER_NAME=saintluciadata
+BlobAccountName=victorweng
+BlobAccountKey=wHdjF1naFXOGqss3rbRXeF5IA68WRy/4R4C6ijWW07pH7j3/i3ZMFNZJa9dXGBnBEOMQ3jqj+BGsiGfeT10Zrg==
